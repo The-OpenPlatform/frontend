@@ -28,7 +28,7 @@
         </button>
       </div>
       <p class="mt-6 text-gray-700 text-center" v-if="response">{{ response }}</p>
-      <p  class="mt-6">Backend URL: <span id="backend-url"></span></p>
+      <ModulesGrid />
     </main>
   </div>
 </template>
@@ -36,6 +36,7 @@
 <script setup>
 import { ref } from 'vue'
 import NavBar from './components/NavBar.vue'
+import ModulesGrid from './components/ModulesGrid.vue'
 
 const response = ref('')
 const backendUrl = import.meta.env.VITE_BACKEND_URL + '/api'
