@@ -21,12 +21,6 @@
           Fetch /hello
         </button>
         <button
-          @click="fetchData('/message')"
-          class="bg-orange-500 hover:bg-orange-600 text-white font-semibold py-2 px-4 rounded"
-        >
-          Fetch /message
-        </button>
-        <button
           @click="fetchData('/status')"
           class="bg-purple-500 hover:bg-purple-600 text-white font-semibold py-2 px-4 rounded"
         >
@@ -44,10 +38,11 @@ import { ref } from 'vue'
 import NavBar from './components/NavBar.vue'
 
 const response = ref('')
+const backendUrl = import.meta.env.VITE_BACKEND_URL + '/api'
 
 async function fetchData(endpoint) {
   try {
-    const url = `/api${endpoint}`;
+    const url = backendUrl + `${endpoint}`;
     const res = await fetch(url)
     response.value = await res.text()
   } catch (err) {
